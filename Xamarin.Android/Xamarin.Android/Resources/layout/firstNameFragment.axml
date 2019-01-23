@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+	android:id="@+id/notificationFragment">
+	<LinearLayout
+		android:orientation="horizontal"
+		android:minWidth="25px"
+		android:minHeight="25px"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/linearLayout1">
+		<ImageView
+			android:src="@drawable/chevron_left"
+			android:layout_width="30dp"
+			android:layout_height="30dp"
+			android:id="@+id/imageView1"
+			android:layout_marginTop="15dp"
+			android:layout_alignParentEnd="true"
+			android:layout_alignParentRight="true"
+			android:clickable="true"/>
+		<EditText
+			android:layout_width="200dp"
+			android:layout_height="35dp"
+			android:layout_marginTop="15dp"
+			android:layout_marginLeft="14dp"
+			android:layout_marginRight="15dp"
+			android:background="#eeeeee"
+			android:id="@+id/firstNameLabel" />
+	</LinearLayout>
+</LinearLayout>
