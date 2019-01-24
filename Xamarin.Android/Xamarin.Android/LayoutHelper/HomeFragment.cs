@@ -13,10 +13,12 @@ using Android.Widget;
 using Android.Support.V4;
 namespace Xamarin.Android.LayoutHelper
 {
+    using global::Android.Media.Audiofx;
+
+    using Xamarin.Android.Models;
 
     public class HomeFragment : Fragment
     {
-        private String textValue = "";
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -29,14 +31,13 @@ namespace Xamarin.Android.LayoutHelper
             var firstNameValue = v.FindViewById<TextView>(Resource.Id.firstNameValue);
 
             var bundle = this.Arguments;
-            textValue = "Cami";
             if (bundle != null)
             {
-                textValue = bundle.GetString("firstName");
+                UserSettings.FirstName = bundle.GetString("firstName");
                
             }
 
-            firstNameValue.SetText(textValue.ToCharArray(), 0, textValue.Length);
+            firstNameValue.SetText(UserSettings.FirstName.ToCharArray(), 0, UserSettings.FirstName.Length);
 
             firstNameLayout.Click += OnClickFirstName;
             return v;
@@ -46,7 +47,7 @@ namespace Xamarin.Android.LayoutHelper
         {
             var fragment = new FirstNameFragment();
             var args = new Bundle();
-            args.PutString("firstName", this.textValue);
+            args.PutString("firstName", UserSettings.FirstName);
             fragment.Arguments = args;
             FragmentManager.BeginTransaction().Replace(Resource.Id.content_frame, fragment).Commit();
         }
