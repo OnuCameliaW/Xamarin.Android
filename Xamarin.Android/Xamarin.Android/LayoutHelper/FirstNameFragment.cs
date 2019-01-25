@@ -44,7 +44,9 @@
             var args = new Bundle();
             args.PutString("firstName", textView.Text);
             fragment.Arguments = args;
-            FragmentManager.BeginTransaction().Replace(Resource.Id.content_frame, fragment).Commit();
+            FragmentManager.BeginTransaction()
+                .SetCustomAnimations(Resource.Drawable.slider_from_right, Resource.Drawable.slider_to_left)
+                .Replace(Resource.Id.content_frame, fragment).Commit();
         }
     }
 }

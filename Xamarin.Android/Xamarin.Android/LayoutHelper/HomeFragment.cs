@@ -51,7 +51,7 @@ namespace Xamarin.Android.LayoutHelper
             fragment.Arguments = args;
             FragmentManager.BeginTransaction()
                 .AddToBackStack("FirstNameFragment")
-                .SetCustomAnimations(Resource.Drawable.slider_left, Resource.Drawable.slider_right)
+                .SetCustomAnimations(Resource.Drawable.slider_from_left, Resource.Drawable.slider_to_right)
                 .Replace(Resource.Id.content_frame, fragment).Commit();
         }
     }

@@ -145,12 +145,12 @@
     <AndroidResource Include="Resources\drawable\chevron_left.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\slider_right.axml">
+    <AndroidResource Include="Resources\drawable\slider_to_right.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\slider_left.axml">
+    <AndroidResource Include="Resources\drawable\slider_to_left.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -161,6 +161,18 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\ic_arrow_back.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\slider_from_left.axml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\slider_from_right.axml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
