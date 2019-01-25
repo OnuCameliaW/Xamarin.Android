@@ -1,5 +1,7 @@
 ﻿namespace Xamarin.Android
 {
+    using System;
+
     using global::Android.App;
     using global::Android.OS;
     using global::Android.Support.Design.Widget;
@@ -58,6 +60,31 @@
 
             // Load the first fragment on creation
             this.LoadFragment(Resource.Id.homeFragment);
+
+            var backButton = FindViewById<Button>(Resource.Id.toolbarBackButton);
+            backButton.Click += OnBackPressed;
+        }
+
+        public void OnBackPressed(Object sender, EventArgs e)
+        {
+            FragmentManager.PopBackStackImmediate();
+            //var fragmentsarray = SupportFragmentManager.Fragments;
+            //foreach (var fragment in fragmentsarray)
+            //{
+            //    if (fragment.IsVisible)
+            //    {
+            //        //put the code to use and get the tag to identify the current Fragment
+            //        string tag = fragment.Tag;
+
+            //    }
+            //}
+        }
+        
+
+        private void SetBackButtonInvisible()
+        {
+            var backButton = FindViewById<Button>(Resource.Id.toolbarBackButton);
+            backButton.Visibility = ViewStates.Gone;
         }
 
         private void BottomNavigation_NavigationItemSelected(
