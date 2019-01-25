@@ -1,36 +1,17 @@
-﻿using Android.App;
-using Android.OS;
-using Android.Runtime;
-using Android.Support.Design.Widget;
-using Android.Support.V7.App;
-using Android.Views;
-using Android.Widget;
-
-namespace Xamarin.Android
+﻿namespace Xamarin.Android
 {
+    using global::Android.App;
+    using global::Android.OS;
+    using global::Android.Support.Design.Widget;
+    using global::Android.Support.V7.App;
+    using global::Android.Views;
+    using global::Android.Widget;
+
     using Xamarin.Android.LayoutHelper;
 
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
-
-        protected override void OnCreate(Bundle savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.activity_main);
-
-            BottomNavigationView navigation = FindViewById<BottomNavigationView>(Resource.Id.navigation);
-            navigation.NavigationItemSelected += BottomNavigation_NavigationItemSelected;
-
-            // Load the first fragment on creation
-            LoadFragment(Resource.Id.homeFragment);
-        }
-
-        private void BottomNavigation_NavigationItemSelected(object sender, BottomNavigationView.NavigationItemSelectedEventArgs e)
-        {
-            LoadFragment(e.Item.ItemId);
-        }
-
         public bool LoadFragment(int item)
         {
             Fragment aFragment = null;
@@ -49,11 +30,41 @@ namespace Xamarin.Android
 
             if (aFragment != null)
             {
-                FragmentManager.BeginTransaction().Replace(Resource.Id.content_frame, aFragment).Commit();
+                this.FragmentManager.BeginTransaction().Replace(Resource.Id.content_frame, aFragment).Commit();
             }
 
             return false;
         }
+
+        public override bool OnKeyDown(Keycode keyCode, KeyEvent e)
+        {
+            if (keyCode == Keycode.Back)
+            {
+                Toast.MakeText(this, "Back button blocked", ToastLength.Short).Show();
+                return false;
+            }
+
+            Toast.MakeText(this, "Button press allowed", ToastLength.Short).Show();
+            return true;
+        }
+
+        protected override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+            SetContentView(Resource.Layout.activity_main);
+
+            var navigation = this.FindViewById<BottomNavigationView>(Resource.Id.navigation);
+            navigation.NavigationItemSelected += this.BottomNavigation_NavigationItemSelected;
+
+            // Load the first fragment on creation
+            this.LoadFragment(Resource.Id.homeFragment);
+        }
+
+        private void BottomNavigation_NavigationItemSelected(
+            object sender,
+            BottomNavigationView.NavigationItemSelectedEventArgs e)
+        {
+            this.LoadFragment(e.Item.ItemId);
+        }
     }
 }
-

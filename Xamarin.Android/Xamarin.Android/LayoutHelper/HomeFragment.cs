@@ -49,7 +49,9 @@ namespace Xamarin.Android.LayoutHelper
             var args = new Bundle();
             args.PutString("firstName", UserSettings.FirstName);
             fragment.Arguments = args;
-            FragmentManager.BeginTransaction().Replace(Resource.Id.content_frame, fragment).Commit();
+            FragmentManager.BeginTransaction()
+                .SetCustomAnimations(Resource.Drawable.slider_left, Resource.Drawable.slider_right)
+                .Replace(Resource.Id.content_frame, fragment).Commit();
         }
     }
 }
